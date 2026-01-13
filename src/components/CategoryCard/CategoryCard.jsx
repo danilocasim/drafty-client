@@ -17,7 +17,7 @@ function CategoryCard() {
       {category &&
         category.map((cat) => {
           return (
-            <div>
+            <div key={cat.id}>
               <Link to={"/category/" + cat.id}>{cat.name}</Link>
               <div>{cat.posts.length}</div>
             </div>
