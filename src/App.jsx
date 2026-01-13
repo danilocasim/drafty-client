@@ -3,6 +3,7 @@ import Navigation from "./components/Navigation/Navigation";
 import style from "./styles/App.module.css";
 import ProfileCard from "./components/ProfileCard/ProfileCard";
 import CategoryCard from "./components/CategoryCard/CategoryCard";
+
 function App() {
   return (
     <div className={style.container}>

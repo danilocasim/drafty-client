@@ -4,6 +4,8 @@ import AboutPage from "./pages/AboutPage/AboutPage.jsx";
 import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import SignupPage from "./pages/SignupPage/SignupPage.jsx";
 import ErrorPage from "./pages/ErrorPage/ErrorPage.jsx";
+import PostPage from "./pages/PostPage/PostPage.jsx";
+import CategoryPosts from "./pages/CategoryPosts/CategoryPosts.jsx";
 
 const routes = [
   {
@@ -15,6 +17,8 @@ const routes = [
       { path: "/about", element: <AboutPage /> },
       { path: "/login", element: <LoginPage /> },
       { path: "/signup", element: <SignupPage /> },
+      { path: "/post/:postId", element: <PostPage /> },
+      { path: "/category/:categoryId", element: <CategoryPosts /> },
     ],
   },
 ];
