@@ -1,11 +1,16 @@
-import { useContext, useEffect, useState } from "react";
-import style from "./Homepage.module.css";
+import { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 function HomePage() {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/blog/v1/post")
+    fetch("http://localhost:8000/blog/v1/post", {
+      headers: {
+        "Content-Type": "application/json",
+      },
+      mode: "cors",
+    })
       .then((response) => response.json())
       .then((data) => setPosts(data.data));
   }, [setPosts]);
@@ -14,7 +19,11 @@ function HomePage() {
     <div>
       {posts &&
         posts.map((post) => {
-          return <h1>{post.title}</h1>;
+          return (
+            <div>
+              <Link to={"/post/" + post.id}>{post.title}</Link>
+            </div>
+          );
         })}
     </div>
   );
