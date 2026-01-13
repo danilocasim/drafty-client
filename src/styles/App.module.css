@@ -5,12 +5,19 @@
 }
 
 .wrapper {
-  display: grid;
-  grid-template-columns: 1fr 4fr;
-  gap: 1rem;
+  display: flex;
+  flex-direction: column-reverse;
 }
 
-.sidebar {
-  display: grid;
-  gap: 1rem;
+@media screen and (min-width: 769px) {
+  .wrapper {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 1rem;
+  }
+
+  .sidebar {
+    display: grid;
+    gap: 1rem;
+  }
 }
