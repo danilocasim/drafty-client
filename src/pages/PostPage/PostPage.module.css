@@ -1,0 +1,18 @@
+.postWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.commentsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.comments {
+  margin-top: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
