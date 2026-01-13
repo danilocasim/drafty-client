@@ -1,5 +1,11 @@
+import style from "./Homepage.module.css";
+
 function HomePage() {
-  return <h1>HomePage</h1>;
+  return (
+    <div className={style.homepageWrapper}>
+      <div>posts</div>
+    </div>
+  );
 }
 
 export default HomePage;

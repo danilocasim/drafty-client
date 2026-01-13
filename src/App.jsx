@@ -1,15 +1,20 @@
-import { Link, Outlet } from "react-router";
-
+import { Outlet } from "react-router";
+import Navigation from "./components/Navigation/Navigation";
+import style from "./styles/App.module.css";
+import ProfileCard from "./components/ProfileCard/ProfileCard";
+import CategoryCard from "./components/CategoryCard/CategoryCard";
 function App() {
   return (
-    <>
-      <Link to={"/"}>Home</Link>
-      <Link to={"/about"}>About</Link>
-      <Link to={"/signup"}>Signup</Link>
-      <Link to={"/login"}>Login</Link>
-
-      <Outlet></Outlet>
-    </>
+    <div className={style.container}>
+      <Navigation></Navigation>
+      <div className={style.wrapper}>
+        <div className={style.sidebar}>
+          <ProfileCard></ProfileCard>
+          <CategoryCard></CategoryCard>
+        </div>
+        <Outlet></Outlet>
+      </div>
+    </div>
   );
 }
 

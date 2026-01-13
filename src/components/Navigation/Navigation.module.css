@@ -1,0 +1,59 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: aquamarine;
+  height: 65px;
+}
+
+.nav div {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.nav .links {
+  display: none;
+}
+
+.nav div .search {
+  display: none;
+}
+
+.nav .burger {
+  fill: white;
+}
+
+.relative {
+  position: relative;
+}
+
+.relative .inputSearch {
+  margin: 0 auto;
+  width: 80vw;
+  position: absolute;
+  bottom: -50px;
+  right: 0;
+}
+
+.relative .navLinks {
+  background-color: aquamarine;
+  position: absolute;
+  bottom: -50px;
+  right: 0;
+}
+
+@media screen and (min-width: 769px) {
+  .nav .relative {
+    display: none;
+  }
+
+  .nav .links {
+    display: flex;
+    gap: 3rem;
+  }
+
+  .nav div .search {
+    display: block;
+  }
+}
