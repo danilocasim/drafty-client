@@ -21,7 +21,7 @@ export const useLoginStatus = (token) => {
         });
 
         if (!response.ok) {
-          navigate("/login");
+          navigate("/");
           setUser(null);
           return;
         }
