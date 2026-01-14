@@ -36,7 +36,7 @@ function SignupPage() {
   }
 
   return (
-    <form>
+    <form className={style.form}>
       <div className={style.wrapper}>
         <label htmlFor='username'>Username</label>
         <Input setState={setUsername} state={username} value='username'></Input>

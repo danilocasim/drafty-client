@@ -38,7 +38,7 @@ function LoginPage() {
   }
 
   return (
-    <form>
+    <form className={style.form}>
       <div className={style.wrapper}>
         <label htmlFor='email'>Email</label>
         <input id='email' name='email' onChange={onChangeEmail} type='email' />

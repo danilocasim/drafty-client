@@ -1,0 +1,39 @@
+.comment p {
+  color: #fafafa;
+}
+
+.comment > p {
+  color: #2acaa0;
+  font-weight: bold;
+}
+
+.updateComment {
+  display: grid;
+  gap: 1rem;
+}
+
+.updateComment input {
+  background-color: transparent;
+  border: none;
+  color: #fafafa;
+  outline: none;
+  box-shadow: 0px 0px 2px #ffffff80;
+}
+
+.updateComment input:focus {
+  outline: 1px solid #2acaa0;
+}
+
+.updateComment button {
+  background-color: #2acaa0;
+}
+
+.editDeleteWrapper {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.editDeleteWrapper button {
+  background-color: #2acaa0;
+}

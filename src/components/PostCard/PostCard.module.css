@@ -1,0 +1,58 @@
+.postCard {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  background-color: #161f1c;
+  padding: 1rem;
+}
+
+.postCard h1 {
+  font-size: clamp(1rem, 10vw, 2rem);
+}
+
+.postCard a {
+  text-decoration: none;
+  color: #fafafa;
+}
+
+.postCard > img {
+  display: none;
+  height: auto;
+  width: 20rem;
+}
+
+.postCard > div {
+  display: grid;
+  place-content: center;
+  gap: 1rem;
+}
+
+.details {
+  display: flex;
+  gap: 1rem;
+}
+
+.details div {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.postCard > div > p {
+  color: #ffffffbf;
+  font-size: 1.2rem;
+}
+
+.details p,
+.details a {
+  color: #ffffff80;
+}
+
+@media screen and (min-width: 1500px) {
+  .postCard > img {
+    display: block;
+  }
+
+  .postCard {
+    border-radius: 1rem;
+  }
+}

@@ -1,0 +1,44 @@
+.categoryCard {
+  display: grid;
+  padding: 1rem;
+  gap: 1rem;
+  background-color: #161f1c;
+}
+
+.categoryCard h1 {
+  color: #fafafa;
+}
+
+.categoryCard .link {
+  text-decoration: none;
+  display: block;
+  width: 100%;
+}
+
+.categoryCard button {
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 7px 0px;
+  cursor: pointer;
+}
+
+.categoryCard button p {
+  color: #d4d4d4;
+}
+
+.categoryCard button div {
+  width: 2rem;
+  border-radius: 0.3rem;
+  font-weight: bold;
+  background-color: #2acaa0;
+}
+
+@media screen and (min-width: 1024px) {
+  .categoryCard {
+    border-radius: 1rem;
+  }
+}

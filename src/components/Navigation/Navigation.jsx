@@ -48,7 +48,9 @@ function Navigation() {
           alt='home icon
         '
         />
-        <h1>Blogs</h1>
+        <h1>
+          <Link>Drafty</Link>
+        </h1>
       </div>
 
       <div className={style.links}>
@@ -70,6 +72,7 @@ function Navigation() {
           />
           {openSearch && (
             <input
+              placeholder='Search'
               value={searchValue}
               onChange={(e) => {
                 setSearchValue(e.target.value);
@@ -79,7 +82,7 @@ function Navigation() {
               type='text'
             />
           )}
-          <div className={style.searchOutput}>
+          <div className={posts.length !== 0 ? style.searchOutput : style.none}>
             {posts.map((post) => {
               return (
                 <Link
@@ -115,17 +118,26 @@ function Navigation() {
         </div>
 
         <div className={style.searchWrapper}>
-          <input
-            value={searchValue}
-            onChange={(e) => {
-              setSearchValue(e.target.value);
-              onChangeSearch(e.target.value);
-            }}
-            type='text'
-            className={style.search}
-          />
+          <div className={style.searchDiv}>
+            <label htmlFor='search'>
+              <img src={search} alt='search' />
+            </label>
+            <input
+              id='search'
+              value={searchValue}
+              placeholder='Search'
+              onChange={(e) => {
+                setSearchValue(e.target.value);
+                onChangeSearch(e.target.value);
+              }}
+              type='text'
+              className={style.search}
+            />
+          </div>
           {posts && (
-            <div className={style.searchOutput}>
+            <div
+              className={posts.length !== 0 ? style.searchOutput : style.none}
+            >
               {posts.map((post) => {
                 return (
                   <Link

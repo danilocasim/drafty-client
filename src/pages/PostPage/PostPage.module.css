@@ -1,7 +1,32 @@
 .postWrapper {
-  display: flex;
-  flex-direction: column;
+  background-color: #161f1c;
+}
+
+.post {
+  display: grid;
   gap: 3rem;
+  padding: 1rem;
+}
+
+.details h1 {
+  color: #ffffff;
+}
+
+.details p {
+  color: #d1d5db;
+}
+
+.content h1,
+.content h2,
+.content h3,
+.content h4,
+.content h5 {
+  color: #ffffff;
+}
+
+.content p,
+.content ul {
+  color: #d1d5db;
 }
 
 .commentsWrapper {
@@ -10,9 +35,27 @@
   gap: 1rem;
 }
 
+.commentsWrapper h3 {
+  color: #fafafa;
+}
+
 .comments {
   margin-top: 2rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+
+.loginPop {
+  color: #d1d5db;
+}
+
+.loginPop a {
+  color: #2acaa0;
+}
+
+@media screen and (min-width: 1024px) {
+  .postWrapper {
+    border-radius: 1rem;
+  }
 }

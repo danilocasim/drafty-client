@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/AuthContext.jsx";
+import style from "./Comment.module.css";
 
 function Comment({
   comment,
@@ -56,17 +57,15 @@ function Comment({
   }
 
   return (
-    <div key={comment.id}>
+    <div className={style.comment} key={comment.id}>
       <p>
         {comment.User.username} {post.userId == comment.userId && <i>Author</i>}
       </p>
-      {!editing && (
-        <div>
-          <p> {comment.content}</p>
-        </div>
-      )}
+      <div>
+        <p> {comment.content}</p>
+      </div>
       {editing == comment.id && (
-        <div>
+        <div className={style.updateComment}>
           <input
             value={updatedComment}
             type='text'
@@ -77,19 +76,21 @@ function Comment({
           <button onClick={() => editComment(comment.id)}>Update</button>
         </div>
       )}
-      {comment.userId == user.id && (
-        <button onClick={() => deleteComment(comment.id)}>Delete</button>
-      )}
-      {comment.userId == user.id && (
-        <button
-          onClick={() => {
-            toggleEditComment(comment.id, comment.content);
-          }}
-        >
-          {comment.id === editing && "Close"}
-          {comment.id !== editing && "Edit"}
-        </button>
-      )}
+      <div className={style.editDeleteWrapper}>
+        {comment.userId == user.id && (
+          <button onClick={() => deleteComment(comment.id)}>Delete</button>
+        )}
+        {comment.userId == user.id && (
+          <button
+            onClick={() => {
+              toggleEditComment(comment.id, comment.content);
+            }}
+          >
+            {comment.id === editing && "Close"}
+            {comment.id !== editing && "Edit"}
+          </button>
+        )}
+      </div>
     </div>
   );
 }

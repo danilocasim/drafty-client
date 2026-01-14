@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router";
 
+import style from "./Homepage.module.css";
+import PostCard from "../../components/PostCard/PostCard";
+
 function HomePage() {
   const [posts, setPosts] = useState([]);
 
@@ -16,13 +19,14 @@ function HomePage() {
   }, [setPosts]);
 
   return (
-    <div>
+    <div className={style.postWrapper}>
       {posts &&
         posts.map((post) => {
           return (
-            <div>
-              <Link to={"/post/" + post.id}>{post.title}</Link>
-            </div>
+            <>
+              <PostCard post={post}></PostCard>
+              <div className={style.line}></div>
+            </>
           );
         })}
     </div>

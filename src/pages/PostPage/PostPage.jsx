@@ -39,20 +39,21 @@ function PostPage() {
   console.log(post);
 
   return (
-    <div className={style.post}>
+    <div className={style.postWrapper}>
       {post && (
-        <div>
-          <h1>{post.title}</h1>
-          <p>{post.description}</p>
-          <p>{post.createdAt}</p>
-          <p>Authored By: {post.User.username}</p>
+        <div className={style.post}>
+          <div className={style.details}>
+            <h1>{post.title}</h1>
+            <p>{post.description}</p>
+            <p>{post.createdAt}</p>
+            <p>Authored By: {post.User.username}</p>
+          </div>
 
-          <br />
-          <br />
+          <div
+            className={style.content}
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
 
-          <div dangerouslySetInnerHTML={{ __html: post.content }} />
-          <br />
-          <br />
           {user && (
             <div className={style.commentsWrapper}>
               <h3>Responses</h3>
@@ -82,7 +83,7 @@ function PostPage() {
             </div>
           )}
           {!user && (
-            <p>
+            <p className={style.loginPop}>
               <Link to={"/login"}>Login now</Link> to see the comments
             </p>
           )}

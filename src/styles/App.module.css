@@ -1,7 +1,7 @@
 @import url(./reset.css);
 
 .wrapper {
-  padding: 5rem 2rem;
+  padding: 5rem 0rem;
   display: flex;
   flex-direction: column-reverse;
 }
@@ -10,6 +10,8 @@
   .container {
     max-width: 80vw;
     margin: 0 auto;
+    display: grid;
+    gap: 1rem;
   }
 
   .wrapper {
@@ -28,5 +30,6 @@
   .content {
     width: calc(100% - 20rem);
     margin-left: 20rem;
+    padding: 1rem;
   }
 }

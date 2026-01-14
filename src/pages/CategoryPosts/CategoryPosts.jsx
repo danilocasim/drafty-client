@@ -1,5 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
+import { useParams } from "react-router";
+import style from "./CategoryPosts.module.css";
+
+import PostCard from "../../components/PostCard/PostCard";
 
 function CategoryPosts() {
   const { categoryId } = useParams();
@@ -17,13 +20,14 @@ function CategoryPosts() {
   }, [categoryId]);
 
   return (
-    <div>
+    <div className={style.postWrapper}>
       {posts &&
         posts.map((post) => {
           return (
-            <div>
-              <Link to={"/post/" + post.id}>{post.title}</Link>
-            </div>
+            <>
+              <PostCard post={post}></PostCard>
+              <div className={style.line}></div>
+            </>
           );
         })}
     </div>

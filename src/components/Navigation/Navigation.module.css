@@ -4,10 +4,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: aquamarine;
+  background-color: #161f1c;
   height: 65px;
   z-index: 1;
   padding: 0 2rem;
+  color: #2acaa0;
 }
 
 .nav div {
@@ -16,8 +17,28 @@
   gap: 0.5rem;
 }
 
+.nav h1 a {
+  text-decoration: none;
+  color: #2acaa0;
+}
+
 .nav .links {
   display: none;
+}
+
+.nav .links a {
+  color: #ffffffbf;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav .links button {
+  background-color: transparent;
+  border: none;
+  font-weight: bold;
+  outline: none;
+  cursor: pointer;
+  color: #ffffffbf;
 }
 
 .nav div .search {
@@ -37,37 +58,72 @@
   width: 80vw;
   position: absolute;
   bottom: -50px;
-  right: 0;
+  right: -2rem;
+  border: none;
+  padding: 1rem;
+  outline: none;
 }
 
 .relative .navLinks {
-  background-color: aquamarine;
+  display: grid;
+  background-color: #22312c;
   position: absolute;
-  bottom: -50px;
+  bottom: -150px;
+  padding: 1rem;
   right: 0;
+  text-align: center;
+}
+
+.navLinks a {
+  text-decoration: none;
+  color: #ffffffbf;
+}
+
+.navLinks button {
+  color: #ffffffbf;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  text-align: center;
 }
 
 .searchWrapper {
   position: relative;
 }
 .relative .searchOutput {
-  background-color: burlywood;
-  width: 20rem;
+  background-color: #22312c;
+  width: 80vw;
   display: flex;
   justify-content: start;
   flex-direction: column;
   align-items: start;
   position: absolute;
   top: 5rem;
-  right: -1.5rem;
+  right: -2rem;
+  padding: 1rem;
+}
+.relative .searchOutput a {
+  color: #fafafa;
+  text-decoration: none;
 }
 
-.searchWrapper .searchOutput {
+.searchWrapper .searchOutput,
+.searchDiv img {
   display: none;
 }
+
+.none {
+  display: none;
+}
+
 @media screen and (min-width: 1024px) {
+  .searchDiv img {
+    display: block;
+  }
+
   .searchWrapper .searchOutput {
-    background-color: burlywood;
+    background-color: #22312c;
+
     width: 20rem;
     display: flex;
     justify-content: start;
@@ -76,10 +132,18 @@
     position: absolute;
     top: 4rem;
     right: 0;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+
+  .searchOutput a {
+    color: #fafafa;
+    text-decoration: none;
   }
 
   .nav {
     width: 80vw;
+    border-radius: 0 0 1rem 1rem;
   }
   .nav .relative {
     display: none;
@@ -92,5 +156,15 @@
 
   .nav div .search {
     display: block;
+    background-color: transparent;
+    color: #ffffff80;
+    padding: 5px 15px;
+    border-radius: 0.5rem;
+    border: none;
+    box-shadow: 0px 0px 2px #ffffff80;
+  }
+
+  .nav div .search:focus {
+    outline: 1px solid #2acaa0;
   }
 }

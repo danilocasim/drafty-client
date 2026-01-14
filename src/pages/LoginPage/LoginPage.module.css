@@ -1,0 +1,11 @@
+.form {
+  padding: 1rem;
+  display: grid;
+  gap: 2rem;
+  background-color: #161f1c;
+  color: #fafafa;
+  border-radius: 1rem;
+}
+.form button {
+  background-color: #2acaa0;
+}

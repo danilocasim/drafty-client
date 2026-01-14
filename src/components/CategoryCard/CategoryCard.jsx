@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useEffect } from "react";
 import { Link } from "react-router";
+import style from "./CategoryCard.module.css";
 
 function CategoryCard() {
   const [category, setCategory] = useState([]);
@@ -12,15 +13,20 @@ function CategoryCard() {
   }, []);
 
   return (
-    <div>
+    <div className={style.categoryCard}>
       <h1>Categories</h1>
       {category &&
         category.map((cat) => {
           return (
-            <div key={cat.id}>
-              <Link to={"/category/" + cat.id}>{cat.name}</Link>
-              <div>{cat.posts.length}</div>
-            </div>
+            <Link
+              className={style.link}
+              to={"/category/" + cat.id}
+              key={cat.id}
+            >
+              <button>
+                <p>{cat.name}</p> <div>{cat.posts.length}</div>
+              </button>
+            </Link>
           );
         })}
     </div>

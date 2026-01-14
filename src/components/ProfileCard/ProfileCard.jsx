@@ -4,11 +4,11 @@ function ProfileCard() {
   return (
     <div className={style.profile}>
       <img
-        src='https://avatars.githubusercontent.com/u/116498474?v=4'
+        src='https://media.tenor.com/Ivgi2AGHJIcAAAAM/el-rista-kek.gif'
         alt='profile'
       />
 
-      <h1>Danilo Casim Jr</h1>
+      <h1>Dan</h1>
       <p>I love making site</p>
     </div>
   );
