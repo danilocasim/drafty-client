@@ -13,6 +13,7 @@ function Navigation() {
   const [posts, setPosts] = useState([]);
 
   const { user, logout } = useContext(AuthContext);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   function toggleNav() {
     setOpenNav(!openNav);
@@ -26,7 +27,7 @@ function Navigation() {
   }
 
   function onChangeSearch(value) {
-    fetch("http://localhost:8000/blog/v1/post/search", {
+    fetch(`${API_URL}/post/search`, {
       headers: {
         "Content-Type": "application/json",
       },

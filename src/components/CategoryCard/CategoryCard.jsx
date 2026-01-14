@@ -5,12 +5,13 @@ import style from "./CategoryCard.module.css";
 
 function CategoryCard() {
   const [category, setCategory] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch("http://localhost:8000/blog/v1/category")
+    fetch(`${API_URL}/category`)
       .then((response) => response.json())
       .then((data) => setCategory(data.data));
-  }, []);
+  }, [API_URL]);
 
   return (
     <div className={style.categoryCard}>

@@ -12,6 +12,7 @@ function Comment({
   setEditing,
 }) {
   const { token, user } = useContext(AuthContext);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   function onChangeUpdateComment(e) {
     setUpdatedComment(e.target.value);
@@ -25,7 +26,7 @@ function Comment({
   }
 
   function deleteComment(id) {
-    fetch(`http://localhost:8000/blog/v1/post/${post.id}/comment/${id}`, {
+    fetch(`${API_URL}/post/${post.id}/comment/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: token,
@@ -40,7 +41,7 @@ function Comment({
   }
 
   function editComment(id) {
-    fetch(`http://localhost:8000/blog/v1/post/${post.id}/comment/${id}`, {
+    fetch(`${API_URL}/post/${post.id}/comment/${id}`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: token,

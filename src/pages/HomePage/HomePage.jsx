@@ -6,9 +6,10 @@ import PostCard from "../../components/PostCard/PostCard";
 
 function HomePage() {
   const [posts, setPosts] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch("http://localhost:8000/blog/v1/post", {
+    fetch(`${API_URL}/post`, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -16,7 +17,7 @@ function HomePage() {
     })
       .then((response) => response.json())
       .then((data) => setPosts(data.data));
-  }, [setPosts]);
+  }, [setPosts, API_URL]);
 
   return (
     <div className={style.postWrapper}>

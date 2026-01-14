@@ -3,13 +3,14 @@ import style from "./AddComment.module.css";
 
 function AddComment({ setNewComment, post, user, token }) {
   const [commentContent, setCommentContent] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL;
 
   function onChangeContent(e) {
     setCommentContent(e.target.value);
   }
 
   function addComment() {
-    fetch(`http://localhost:8000/blog/v1/post/${post.id}/comment`, {
+    fetch(`${API_URL}/${post.id}/comment`, {
       headers: {
         "Content-Type": "application/json",
         Authorization: token,

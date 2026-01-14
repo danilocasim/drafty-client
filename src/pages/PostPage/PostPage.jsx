@@ -10,6 +10,7 @@ function PostPage() {
   const { postId } = useParams();
   const { user, token } = useContext(AuthContext);
   const [post, setPost] = useState(null);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   const [newComment, setNewComment] = useState(null);
   const [updatedComment, setUpdatedComment] = useState(null);
@@ -26,7 +27,7 @@ function PostPage() {
   );
 
   useEffect(() => {
-    fetch("http://localhost:8000/blog/v1/post/public/" + postId, {
+    fetch(`${API_URL}/post/public/` + postId, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -34,7 +35,7 @@ function PostPage() {
     })
       .then((response) => response.json())
       .then((data) => setPost(data.data));
-  }, [postId]);
+  }, [postId, API_URL]);
 
   console.log(post);
 

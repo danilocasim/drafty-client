@@ -6,6 +6,7 @@ function LoginPage() {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const API_URL = import.meta.env.VITE_API_URL;
 
   function onChangeEmail(e) {
     setEmail(e.target.value);
@@ -17,7 +18,7 @@ function LoginPage() {
 
   function login(e) {
     e.preventDefault();
-    fetch("http://localhost:8000/blog/v1/login", {
+    fetch(`${API_URL}/login`, {
       headers: {
         "Content-Type": "application/json",
       },

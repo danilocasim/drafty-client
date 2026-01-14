@@ -7,9 +7,10 @@ import PostCard from "../../components/PostCard/PostCard";
 function CategoryPosts() {
   const { categoryId } = useParams();
   const [posts, setPosts] = useState([]);
+  const API_URL = import.meta.env.VITE_API_URL;
 
   useEffect(() => {
-    fetch("http://localhost:8000/blog/v1/category/" + categoryId, {
+    fetch(`${API_URL}/category/` + categoryId, {
       headers: {
         "Content-Type": "application/json",
       },
@@ -17,7 +18,7 @@ function CategoryPosts() {
     })
       .then((response) => response.json())
       .then((data) => setPosts(data.data));
-  }, [categoryId]);
+  }, [categoryId, API_URL]);
 
   return (
     <div className={style.postWrapper}>
