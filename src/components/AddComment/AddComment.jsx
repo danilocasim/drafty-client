@@ -1,4 +1,5 @@
 import { useState } from "react";
+import style from "./AddComment.module.css";
 
 function AddComment({ setNewComment, post, user, token }) {
   const [commentContent, setCommentContent] = useState("");
@@ -24,7 +25,7 @@ function AddComment({ setNewComment, post, user, token }) {
       });
   }
   return (
-    <div>
+    <div className={style.addCommentWrapper}>
       <input
         type='text'
         name='content'

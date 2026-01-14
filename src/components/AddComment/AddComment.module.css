@@ -1,0 +1,19 @@
+.addCommentWrapper {
+  display: grid;
+  gap: 1rem;
+}
+
+.addCommentWrapper input {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  box-shadow: 0px 0px 2px #ffffff80;
+}
+
+.addCommentWrapper input:focus {
+  outline: 1px solid #2acaa0;
+}
+
+.addCommentWrapper button {
+  background-color: #2acaa0;
+}
