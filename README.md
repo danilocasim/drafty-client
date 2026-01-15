@@ -14,7 +14,7 @@
 * [Tech Stack](#tech-stack)
 * [API Integration](#api-integration)
 * [Setup & Installation](#setup--installation)
-* [Backend Reference](https://github.com/danilocasim/drafty-api)
+* [Backend Reference](#backend-repository)
 * [Contributing](#contributing)
 * [License](#license)
 
@@ -48,7 +48,7 @@ Key endpoints used:
 * `GET /post/:id/comments` – Fetch post comments
 * `POST /post/:id/comments` – Add comment (JWT required)
 
-**Backend Repository:** [Drafty API](https://github.com/danilocasim/drafty-api)
+## **Backend Repository:** [Drafty API](https://github.com/danilocasim/drafty-api)
 
 ---
 
@@ -70,7 +70,7 @@ Key endpoints used:
 3. **Configure environment variables** (`.env`)
 
    ```env
-   VITE_API_URL=https://drafty-api.vercel.app
+   VITE_API_URL=https://drafty-api.vercel.app/blog/v1
    ```
 
 4. **Start the development server**
