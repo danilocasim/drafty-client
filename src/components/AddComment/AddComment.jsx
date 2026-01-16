@@ -1,8 +1,8 @@
-import { useState } from "react";
-import style from "./AddComment.module.css";
+import { useState } from 'react';
+import style from './AddComment.module.css';
 
 function AddComment({ setNewComment, post, user, token }) {
-  const [commentContent, setCommentContent] = useState("");
+  const [commentContent, setCommentContent] = useState('');
   const API_URL = import.meta.env.VITE_API_URL;
 
   function onChangeContent(e) {
@@ -10,18 +10,18 @@ function AddComment({ setNewComment, post, user, token }) {
   }
 
   function addComment() {
-    fetch(`${API_URL}/${post.id}/comment`, {
+    fetch(`${API_URL}/post/${post.id}/comment`, {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
         Authorization: token,
       },
-      method: "POST",
-      mode: "cors",
+      method: 'POST',
+      mode: 'cors',
       body: JSON.stringify({ content: commentContent, userId: user.id }),
     })
       .then((response) => response.json())
       .then((data) => {
-        setCommentContent("");
+        setCommentContent('');
         setNewComment(data.data);
       });
   }
