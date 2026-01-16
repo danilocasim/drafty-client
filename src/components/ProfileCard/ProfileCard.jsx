@@ -1,12 +1,10 @@
-import style from "./ProfileCard.module.css";
+import style from './ProfileCard.module.css';
+import me from '../../assets/me.jpeg';
 
 function ProfileCard() {
   return (
     <div className={style.profile}>
-      <img
-        src='https://media.tenor.com/Ivgi2AGHJIcAAAAM/el-rista-kek.gif'
-        alt='profile'
-      />
+      <img src={me} alt='profile' />
 
       <h1>Dan</h1>
       <p>I love making site</p>
