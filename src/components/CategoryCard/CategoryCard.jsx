@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useEffect } from "react";
-import { Link } from "react-router";
-import style from "./CategoryCard.module.css";
+import { Fragment, useState } from 'react';
+import { useEffect } from 'react';
+import { Link } from 'react-router';
+import style from './CategoryCard.module.css';
 
 function CategoryCard() {
   const [category, setCategory] = useState([]);
@@ -14,23 +14,26 @@ function CategoryCard() {
   }, [API_URL]);
 
   return (
-    <div className={style.categoryCard}>
-      <h1>Categories</h1>
-      {category &&
-        category.map((cat) => {
-          return (
-            <Link
-              className={style.link}
-              to={"/category/" + cat.id}
-              key={cat.id}
-            >
-              <button>
-                <p>{cat.name}</p> <div>{cat.posts.length}</div>
-              </button>
-            </Link>
-          );
-        })}
-    </div>
+    <Fragment>
+      {category && (
+        <div className={style.categoryCard}>
+          <h1>Categories</h1>
+          {category.map((cat) => {
+            return (
+              <Link
+                className={style.link}
+                to={'/category/' + cat.id}
+                key={cat.id}
+              >
+                <button>
+                  <p>{cat.name}</p> <div>{cat.posts.length}</div>
+                </button>
+              </Link>
+            );
+          })}
+        </div>
+      )}
+    </Fragment>
   );
 }
 
