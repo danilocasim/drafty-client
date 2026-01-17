@@ -15,7 +15,7 @@ function CategoryCard() {
 
   return (
     <Fragment>
-      {category && (
+      {category.length !== 0 && (
         <div className={style.categoryCard}>
           <h1>Categories</h1>
           {category.map((cat) => {
