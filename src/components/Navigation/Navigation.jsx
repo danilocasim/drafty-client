@@ -7,7 +7,6 @@ import home from '../../assets/home.svg';
 import { AuthContext } from '../../contexts/AuthContext';
 
 function Navigation({
-  openSearch,
   setOpenSearch,
   searchInputRef,
   searchValue,
@@ -15,6 +14,7 @@ function Navigation({
   setPosts,
   posts,
   onChangeSearch,
+  toggleSearch,
 }) {
   const [openNav, setOpenNav] = useState(false);
 
@@ -60,13 +60,6 @@ function Navigation({
     };
   }, [handleOutsideClick]);
 
-  function toggleSearch() {
-    if (!openSearch == false) {
-      setPosts([]);
-    }
-    setOpenSearch(!openSearch);
-  }
-
   return (
     <nav className={style.nav}>
       <div>
@@ -98,23 +91,6 @@ function Navigation({
             src={search}
             alt='search'
           />
-
-          <div className={posts.length !== 0 ? style.searchOutput : style.none}>
-            {posts.map((post) => {
-              return (
-                <Link
-                  onClick={() => {
-                    setSearchValue('');
-                    setPosts([]);
-                    toggleSearch();
-                  }}
-                  to={'/post/' + post.id}
-                >
-                  {post.title}
-                </Link>
-              );
-            })}
-          </div>
         </div>
         <div className={style.relative} ref={burgerRef}>
           <img

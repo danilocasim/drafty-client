@@ -16,8 +16,41 @@
   color: #ffffff80;
   margin-bottom: 1rem;
 }
+.relative {
+  position: relative;
+}
+
+.relative .searchOutput {
+  background-color: #22312c;
+  width: 80vw;
+  display: flex;
+  justify-content: start;
+  flex-direction: column;
+  align-items: start;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  padding: 1rem;
+}
+.relative .searchOutput a {
+  color: #fafafa;
+  text-decoration: none;
+}
+
+.searchWrapper .searchOutput,
+.searchDiv img {
+  display: none;
+}
+
+.none {
+  display: none;
+}
 
 @media screen and (min-width: 1024px) {
+  .relative {
+    display: none;
+  }
   .container {
     max-width: 80vw;
     margin: 0 auto;

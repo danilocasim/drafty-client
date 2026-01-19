@@ -1,4 +1,4 @@
-import { Outlet, useNavigate } from 'react-router';
+import { Link, Outlet, useNavigate } from 'react-router';
 import Navigation from './components/Navigation/Navigation';
 import style from './styles/App.module.css';
 import ProfileCard from './components/ProfileCard/ProfileCard';
@@ -18,6 +18,12 @@ function App() {
   const searchInputRef = useRef(null);
 
   const API_URL = import.meta.env.VITE_API_URL;
+  function toggleSearch() {
+    if (!openSearch == false) {
+      setPosts([]);
+    }
+    setOpenSearch(!openSearch);
+  }
 
   function onChangeSearch(value) {
     fetch(`${API_URL}/post/search`, {
@@ -39,7 +45,7 @@ function App() {
     setUser(null);
     navigate('/');
   }
-
+  Link;
   return (
     <AuthContext value={{ user, token, logout }}>
       <div className={style.container}>
@@ -52,6 +58,7 @@ function App() {
           posts={posts}
           onChangeSearch={onChangeSearch}
           searchInputRef={searchInputRef}
+          toggleSearch={toggleSearch}
         ></Navigation>
         <div className={style.wrapper}>
           <div className={style.sidebar}>
@@ -59,19 +66,39 @@ function App() {
             <CategoryCard></CategoryCard>
           </div>
           <div className={style.content}>
-            {openSearch && (
-              <input
-                ref={searchInputRef}
-                placeholder='Search'
-                value={searchValue}
-                onChange={(e) => {
-                  setSearchValue(e.target.value);
-                  onChangeSearch(e.target.value);
-                }}
-                className={style.inputSearch}
-                type='text'
-              />
-            )}
+            <div className={style.relative}>
+              {openSearch && (
+                <input
+                  ref={searchInputRef}
+                  placeholder='Search'
+                  value={searchValue}
+                  onChange={(e) => {
+                    setSearchValue(e.target.value);
+                    onChangeSearch(e.target.value);
+                  }}
+                  className={style.inputSearch}
+                  type='text'
+                />
+              )}
+              <div
+                className={posts.length !== 0 ? style.searchOutput : style.none}
+              >
+                {posts.map((post) => {
+                  return (
+                    <Link
+                      onClick={() => {
+                        setSearchValue('');
+                        setPosts([]);
+                        toggleSearch();
+                      }}
+                      to={'/post/' + post.id}
+                    >
+                      {post.title}
+                    </Link>
+                  );
+                })}
+              </div>
+            </div>
             <Outlet></Outlet>
           </div>
         </div>
