@@ -1,16 +1,22 @@
 import { Link } from 'react-router';
 import style from './Navigation.module.css';
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import burger from '../../assets/navbar.svg';
 import search from '../../assets/search.svg';
 import home from '../../assets/home.svg';
 import { AuthContext } from '../../contexts/AuthContext';
 
-function Navigation() {
+function Navigation({
+  openSearch,
+  setOpenSearch,
+  searchInputRef,
+  searchValue,
+  setSearchValue,
+  setPosts,
+  posts,
+  onChangeSearch,
+}) {
   const [openNav, setOpenNav] = useState(false);
-  const [openSearch, setOpenSearch] = useState(false);
-  const [searchValue, setSearchValue] = useState('');
-  const [posts, setPosts] = useState([]);
 
   const { user, logout } = useContext(AuthContext);
   const API_URL = import.meta.env.VITE_API_URL;
@@ -19,36 +25,39 @@ function Navigation() {
   const navLinksRef = useRef(null);
 
   const searchIconRef = useRef(null);
-  const searchInputRef = useRef(null);
 
   function toggleNav() {
     setOpenNav(!openNav);
   }
-  const handleOutsideClick = (e) => {
-    if (
-      (burgerRef.current &&
-        !burgerRef.current.contains(e.target) &&
-        navLinksRef.current &&
-        !navLinksRef.current.contains(e.target)) ||
-      (searchIconRef.current &&
-        !searchIconRef.current.contains(e.target) &&
-        searchInputRef.current &&
-        !searchInputRef.current.contains(e.target))
-    ) {
-      setOpenNav(false);
-      setOpenSearch(false);
-      console.log('KIK');
-    }
-  };
+
+  const handleOutsideClick = useCallback(
+    (e) => {
+      if (
+        (burgerRef.current &&
+          !burgerRef.current.contains(e.target) &&
+          navLinksRef.current &&
+          !navLinksRef.current.contains(e.target)) ||
+        (searchIconRef.current &&
+          !searchIconRef.current.contains(e.target) &&
+          searchInputRef.current &&
+          !searchInputRef.current.contains(e.target))
+      ) {
+        setOpenNav(false);
+        setOpenSearch(false);
+        console.log('KIK');
+      }
+    },
+    [searchInputRef, setOpenSearch]
+  );
 
   useEffect(() => {
     document.addEventListener('mousedown', handleOutsideClick);
-
+    console.log('RENDER');
     // Cleanup function
     return () => {
       document.removeEventListener('mousedown', handleOutsideClick);
     };
-  }, []);
+  }, [handleOutsideClick]);
 
   function toggleSearch() {
     if (!openSearch == false) {
@@ -57,20 +66,6 @@ function Navigation() {
     setOpenSearch(!openSearch);
   }
 
-  function onChangeSearch(value) {
-    fetch(`${API_URL}/post/search`, {
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      mode: 'cors',
-      body: JSON.stringify({ title: value }),
-      method: 'POST',
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        setPosts(data.data);
-      });
-  }
   return (
     <nav className={style.nav}>
       <div>
@@ -102,19 +97,7 @@ function Navigation() {
             src={search}
             alt='search'
           />
-          {openSearch && (
-            <input
-              ref={searchInputRef}
-              placeholder='Search'
-              value={searchValue}
-              onChange={(e) => {
-                setSearchValue(e.target.value);
-                onChangeSearch(e.target.value);
-              }}
-              className={style.inputSearch}
-              type='text'
-            />
-          )}
+
           <div className={posts.length !== 0 ? style.searchOutput : style.none}>
             {posts.map((post) => {
               return (

@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Fragment, useEffect, useState } from 'react';
+import { Link } from 'react-router';
 
-import style from "./Homepage.module.css";
-import PostCard from "../../components/PostCard/PostCard";
+import style from './Homepage.module.css';
+import PostCard from '../../components/PostCard/PostCard';
 
 function HomePage() {
   const [posts, setPosts] = useState([]);
@@ -11,9 +11,9 @@ function HomePage() {
   useEffect(() => {
     fetch(`${API_URL}/post`, {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      mode: "cors",
+      mode: 'cors',
     })
       .then((response) => response.json())
       .then((data) => setPosts(data.data));
@@ -24,10 +24,10 @@ function HomePage() {
       {posts &&
         posts.map((post) => {
           return (
-            <>
+            <Fragment key={post.id}>
               <PostCard post={post}></PostCard>
               <div className={style.line}></div>
-            </>
+            </Fragment>
           );
         })}
     </div>
