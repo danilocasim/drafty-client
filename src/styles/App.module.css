@@ -35,7 +35,7 @@
   }
 
   .sidebar {
-    position: fixed;
+    position: absolute;
     width: 20rem;
     display: flex;
     flex-direction: column;
