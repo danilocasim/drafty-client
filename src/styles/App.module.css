@@ -63,12 +63,11 @@
   }
 
   .wrapper {
-    display: flex;
-    flex-direction: column;
+    display: grid;
   }
 
   .sidebar {
-    position: absolute;
+    position: fixed;
     width: 20rem;
     display: flex;
     flex-direction: column;
