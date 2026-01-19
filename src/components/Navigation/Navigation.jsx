@@ -1,23 +1,54 @@
-import { Link } from "react-router";
-import style from "./Navigation.module.css";
-import { useContext, useState } from "react";
-import burger from "../../assets/navbar.svg";
-import search from "../../assets/search.svg";
-import home from "../../assets/home.svg";
-import { AuthContext } from "../../contexts/AuthContext";
+import { Link } from 'react-router';
+import style from './Navigation.module.css';
+import { useContext, useEffect, useRef, useState } from 'react';
+import burger from '../../assets/navbar.svg';
+import search from '../../assets/search.svg';
+import home from '../../assets/home.svg';
+import { AuthContext } from '../../contexts/AuthContext';
 
 function Navigation() {
   const [openNav, setOpenNav] = useState(false);
   const [openSearch, setOpenSearch] = useState(false);
-  const [searchValue, setSearchValue] = useState("");
+  const [searchValue, setSearchValue] = useState('');
   const [posts, setPosts] = useState([]);
 
   const { user, logout } = useContext(AuthContext);
   const API_URL = import.meta.env.VITE_API_URL;
 
+  const burgerRef = useRef(null);
+  const navLinksRef = useRef(null);
+
+  const searchIconRef = useRef(null);
+  const searchInputRef = useRef(null);
+
   function toggleNav() {
     setOpenNav(!openNav);
   }
+  const handleOutsideClick = (e) => {
+    if (
+      (burgerRef.current &&
+        !burgerRef.current.contains(e.target) &&
+        navLinksRef.current &&
+        !navLinksRef.current.contains(e.target)) ||
+      (searchIconRef.current &&
+        !searchIconRef.current.contains(e.target) &&
+        searchInputRef.current &&
+        !searchInputRef.current.contains(e.target))
+    ) {
+      setOpenNav(false);
+      setOpenSearch(false);
+      console.log('KIK');
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('mousedown', handleOutsideClick);
+
+    // Cleanup function
+    return () => {
+      document.removeEventListener('mousedown', handleOutsideClick);
+    };
+  }, []);
 
   function toggleSearch() {
     if (!openSearch == false) {
@@ -29,18 +60,17 @@ function Navigation() {
   function onChangeSearch(value) {
     fetch(`${API_URL}/post/search`, {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      mode: "cors",
+      mode: 'cors',
       body: JSON.stringify({ title: value }),
-      method: "POST",
+      method: 'POST',
     })
       .then((response) => response.json())
       .then((data) => {
         setPosts(data.data);
       });
   }
-
   return (
     <nav className={style.nav}>
       <div>
@@ -55,16 +85,17 @@ function Navigation() {
       </div>
 
       <div className={style.links}>
-        <Link to={"/"}>Home</Link>
-        <Link to={"/about"}>About</Link>
-        {!user && <Link to={"/login"}>Login</Link>}
-        {!user && <Link to={"/signup"}>Signup</Link>}
+        <Link to={'/'}>Home</Link>
+        <Link to={'/about'}>About</Link>
+        {!user && <Link to={'/login'}>Login</Link>}
+        {!user && <Link to={'/signup'}>Signup</Link>}
         {user && <button onClick={logout}>Logout</button>}
       </div>
 
       <div>
         <div className={style.relative}>
           <img
+            ref={searchIconRef}
             onClick={() => {
               toggleSearch();
             }}
@@ -73,6 +104,7 @@ function Navigation() {
           />
           {openSearch && (
             <input
+              ref={searchInputRef}
               placeholder='Search'
               value={searchValue}
               onChange={(e) => {
@@ -88,11 +120,11 @@ function Navigation() {
               return (
                 <Link
                   onClick={() => {
-                    setSearchValue("");
+                    setSearchValue('');
                     setPosts([]);
                     toggleSearch();
                   }}
-                  to={"/post/" + post.id}
+                  to={'/post/' + post.id}
                 >
                   {post.title}
                 </Link>
@@ -100,7 +132,7 @@ function Navigation() {
             })}
           </div>
         </div>
-        <div className={style.relative}>
+        <div className={style.relative} ref={burgerRef}>
           <img
             onClick={toggleNav}
             className={style.burger}
@@ -108,12 +140,12 @@ function Navigation() {
             alt='burger nav'
           />
           {openNav && (
-            <div className={style.navLinks}>
-              <Link to={"/"}>Home</Link>
-              <Link to={"/about"}>About</Link>
-              {!user && <Link to={"/login"}>Login</Link>}
-              {!user && <Link to={"/signup"}>Signup</Link>}
-              {user && <button onClick={logout}>Logout</button>}{" "}
+            <div className={style.navLinks} ref={navLinksRef}>
+              <Link to={'/'}>Home</Link>
+              <Link to={'/about'}>About</Link>
+              {!user && <Link to={'/login'}>Login</Link>}
+              {!user && <Link to={'/signup'}>Signup</Link>}
+              {user && <button onClick={logout}>Logout</button>}{' '}
             </div>
           )}
         </div>
@@ -143,10 +175,10 @@ function Navigation() {
                 return (
                   <Link
                     onClick={() => {
-                      setSearchValue("");
+                      setSearchValue('');
                       setPosts([]);
                     }}
-                    to={"/post/" + post.id}
+                    to={'/post/' + post.id}
                   >
                     {post.title}
                   </Link>
