@@ -44,10 +44,11 @@ function Navigation({
       ) {
         setOpenNav(false);
         setOpenSearch(false);
-        console.log('KIK');
+        setPosts([]);
+        setSearchValue('');
       }
     },
-    [searchInputRef, setOpenSearch]
+    [searchInputRef, setOpenSearch, setPosts, setSearchValue]
   );
 
   useEffect(() => {
