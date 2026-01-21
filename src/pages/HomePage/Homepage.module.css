@@ -7,6 +7,11 @@
   height: 1px;
 }
 
+.noPost {
+  color: #fafafa;
+  padding: 1rem;
+}
+
 @media screen and (min-width: 1024px) {
   .postWrapper {
     gap: 1rem;

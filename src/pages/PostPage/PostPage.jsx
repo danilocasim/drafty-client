@@ -37,8 +37,6 @@ function PostPage() {
       .then((data) => setPost(data.data));
   }, [postId, API_URL]);
 
-  console.log(post);
-
   return (
     <div className={style.postWrapper}>
       {post && (
