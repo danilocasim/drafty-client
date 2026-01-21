@@ -142,7 +142,7 @@
   }
 
   .nav {
-    width: 80vw;
+    width: calc(80vw + 1rem);
     border-radius: 0 0 1rem 1rem;
   }
   .nav .relative {

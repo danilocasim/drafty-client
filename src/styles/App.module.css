@@ -52,10 +52,14 @@
     display: none;
   }
   .container {
-    max-width: 80vw;
+    max-width: calc(80vw + 1rem);
     margin: 0 auto;
     display: grid;
     gap: 1rem;
+  }
+
+  pre {
+    overflow: scroll;
   }
 
   .inputSearch {
@@ -64,10 +68,11 @@
 
   .wrapper {
     display: grid;
+    grid-template-columns: 1fr 4fr;
+    gap: 1rem;
   }
 
   .sidebar {
-    position: fixed;
     width: 20rem;
     display: flex;
     flex-direction: column;
@@ -75,8 +80,6 @@
   }
 
   .content {
-    width: calc(100% - 20rem);
-    margin-left: 20rem;
-    padding: 1rem;
+    max-width: calc(80vw - 20rem);
   }
 }

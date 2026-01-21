@@ -1,10 +1,10 @@
-import { useContext, useEffect, useState } from "react";
-import { Link, useParams } from "react-router";
-import style from "./PostPage.module.css";
-import { AuthContext } from "../../contexts/AuthContext.jsx";
-import { useGetComments } from "../../hooks/useGetComments";
-import Comment from "../../components/Comment/Comment.jsx";
-import AddComment from "../../components/AddComment/AddComment";
+import { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router';
+import style from './PostPage.module.css';
+import { AuthContext } from '../../contexts/AuthContext.jsx';
+import { useGetComments } from '../../hooks/useGetComments';
+import Comment from '../../components/Comment/Comment.jsx';
+import AddComment from '../../components/AddComment/AddComment';
 
 function PostPage() {
   const { postId } = useParams();
@@ -29,9 +29,9 @@ function PostPage() {
   useEffect(() => {
     fetch(`${API_URL}/post/public/` + postId, {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      mode: "cors",
+      mode: 'cors',
     })
       .then((response) => response.json())
       .then((data) => setPost(data.data));
@@ -85,7 +85,7 @@ function PostPage() {
           )}
           {!user && (
             <p className={style.loginPop}>
-              <Link to={"/login"}>Login now</Link> to see the comments
+              <Link to={'/login'}>Login now</Link> to see the comments
             </p>
           )}
         </div>
