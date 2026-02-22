@@ -23,7 +23,7 @@ function PostPage() {
     deletedComment,
     updatedComment,
     newComment,
-    editing
+    editing,
   );
 
   useEffect(() => {
@@ -44,7 +44,7 @@ function PostPage() {
           <div className={style.details}>
             <h1>{post.title}</h1>
             <p>{post.description}</p>
-            <p>{post.createdAt}</p>
+            <p>Written On: {new Date(post.createdAt).toLocaleDateString()}</p>
             <p>Authored By: {post.User.username}</p>
           </div>
 

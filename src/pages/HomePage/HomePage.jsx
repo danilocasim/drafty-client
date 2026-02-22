@@ -19,8 +19,7 @@ function HomePage() {
       .then((data) => setPosts(data.data));
   }, [setPosts, API_URL]);
 
-  if (posts.length === 0)
-    return <h1 className={style.noPost}>Looks nothing here</h1>;
+  if (posts.length === 0) return <h1 className={style.noPost}>Loading...</h1>;
 
   return (
     <div className={style.postWrapper}>

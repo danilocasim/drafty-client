@@ -1,13 +1,14 @@
-import { useState } from "react";
-import { useNavigate } from "react-router";
-import style from "./LoginPage.module.css";
+import { useState } from 'react';
+import { useNavigate } from 'react-router';
+import style from './LoginPage.module.css';
 
 function LoginPage() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const API_URL = import.meta.env.VITE_API_URL;
 
+  console.log(API_URL);
   function onChangeEmail(e) {
     setEmail(e.target.value);
   }
@@ -20,18 +21,18 @@ function LoginPage() {
     e.preventDefault();
     fetch(`${API_URL}/login`, {
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      mode: "cors",
+      mode: 'cors',
       body: JSON.stringify({ email: email, password: password }),
-      method: "POST",
+      method: 'POST',
     })
       .then((response) => {
         return response.json();
       })
       .then((data) => {
-        localStorage.setItem("token", "Beaerer " + data.token);
-        navigate("/");
+        localStorage.setItem('token', 'Beaerer ' + data.token);
+        navigate('/');
       })
       .catch((e) => {
         console.log(e);
